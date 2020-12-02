@@ -40,8 +40,8 @@ def predict(image):
     if prediction[0][0] > prediction[0][1]:
         return str(int(prediction[0][0]*100)) + "% not sleepy"
     else:
-        a = threading.Thread(target=beep)
-        a.start()
+        # a = threading.Thread(target=beep)
+        # a.start()
         return str(int(prediction[0][1]*100)) + "% sleepy"
 
 def beep():
@@ -88,8 +88,9 @@ if __name__ == "__main__":
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 
-    cap = cv2.VideoCapture(0)
-
+    # cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture("39835179454-offset-2516.mp4")
+    
     # cap.set(3,640)
     # cap.set(4,480)
 
@@ -101,6 +102,7 @@ if __name__ == "__main__":
             print('No Frame')
             continue
 
+        frame = cv2.resize(frame, (640, 480))
         image = frame
         screen = frame
         
